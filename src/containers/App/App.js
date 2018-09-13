@@ -11,15 +11,14 @@ class App extends Component {
   componentDidMount = async () => {
     const response = await fetch('http://localhost:3001/api/v1/houses')
     const data = await response.json();
-    const houses = await data.map(async (house, index) => {
+    const houses = data.map((house, index) => {
       return(
         {name: house.name, founded: house.founded, seats: house.seats,
           titles: house.titles, weapons: house.ancestralWeapons,
           arms: house.coatOfArms, members: house.swornMembers, id: index}
       )
     })
-    const resolvedHouses = await Promise.all(houses)
-    this.props.addHouses(resolvedHouses)
+    this.props.addHouses(houses)
   }
 
   render() {
