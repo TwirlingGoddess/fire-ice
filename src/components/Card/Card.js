@@ -7,7 +7,7 @@ export const Card = ({name, founded, seats, titles, weapons, arms, members, id, 
       <li>{member.name}: {member.died || "Alive"} </li>
     )
   })
-
+  
   const filterTitles = titles.map(title => {
     return (
       <p>Title: {title}</p>

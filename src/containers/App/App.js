@@ -12,26 +12,14 @@ class App extends Component {
     const response = await fetch('http://localhost:3001/api/v1/houses')
     const data = await response.json();
     const houses = await data.map(async (house, index) => {
-    const filteredMembers = await this.membersFetch(house.swornMembers)
       return(
         {name: house.name, founded: house.founded, seats: house.seats,
           titles: house.titles, weapons: house.ancestralWeapons,
-          arms: house.coatOfArms, members: filteredMembers, id: index}
+          arms: house.coatOfArms, members: house.swornMembers, id: index}
       )
     })
     const resolvedHouses = await Promise.all(houses)
     this.props.addHouses(resolvedHouses)
-  }
-
-  membersFetch = (members) => {
-    const unresolvedMembers = members.map(async member => { 
-      const response = await fetch(member);
-      const data = await response.json()
-      return (
-        {name: data.name, died: data.died, id: data.id}
-      )
-    })
-    return Promise.all(unresolvedMembers)
   }
 
   render() {
@@ -42,7 +30,7 @@ class App extends Component {
           <h2>Welcome to Westeros</h2>
         </div>
         <div className='Display-info'>
-          <CardContainer />
+          <CardContainer/>
         </div>
       </div>
     );
