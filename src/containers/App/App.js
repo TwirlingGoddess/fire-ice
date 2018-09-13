@@ -15,8 +15,8 @@ class App extends Component {
     const filteredMembers = await this.membersFetch(house.swornMembers)
       return(
         {name: house.name, founded: house.founded, seats: house.seats,
-          titles: house.titles, ancestralWeapons: house.ancestralWeapons,
-          coatOfArms: house.coatOfArms, members: filteredMembers, id: index}
+          titles: house.titles, weapons: house.ancestralWeapons,
+          arms: house.coatOfArms, members: filteredMembers, id: index}
       )
     })
     const resolvedHouses = await Promise.all(houses)
@@ -28,7 +28,7 @@ class App extends Component {
       const response = await fetch(member);
       const data = await response.json()
       return (
-        {name: data.name, died: data.died}
+        {name: data.name, died: data.died, id: data.id}
       )
     })
     return Promise.all(unresolvedMembers)

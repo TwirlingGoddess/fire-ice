@@ -9,7 +9,11 @@ class CardContainer extends Component {
                     key={house.id}
             />
       )})
-    return (<div>{displayCards}</div>)
+    return (
+      <div className="Container">
+        {displayCards}
+      </div>
+    )
   }
 }
 
