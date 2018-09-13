@@ -6,7 +6,6 @@ import { addMembers } from '../../actions';
 class CardContainer extends Component {
 
   membersFetch = (members) => {
-    console.log(members)
     const foundMembers = members.map(async member => {
         const response = await fetch(member);
         const data = await response.json()
@@ -20,7 +19,6 @@ class CardContainer extends Component {
 
   render(){
     const displayCards = this.props.houses.map(house => {
-      console.log(house)
       const newId = house.name
       return( <Card {...house}
                     key={house.id}
