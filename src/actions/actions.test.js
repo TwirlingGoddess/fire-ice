@@ -1,4 +1,5 @@
 import * from '../actions';
+import React from 'react'
 
 describe('actions', () => {
   
