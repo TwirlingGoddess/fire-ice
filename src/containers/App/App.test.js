@@ -4,7 +4,7 @@ import { addHouses } from '../../actions';
 
    describe('mapStateToProps', () => {
     it('should return an object with the houses array', () => {
-      const mockState = {
+      const mockHouse = {
         name: "The Cow Jumped Over the Moon", founded: "Before the 3rd of Yore", id: 3
       }
       
@@ -13,7 +13,7 @@ import { addHouses } from '../../actions';
           name: "The Cow Jumped Over the Moon", founded: "Before the 3rd of Yore", id: 3
         }]
       }
-      const mappedProps = mapStateToProps(mockState)
+      const mappedProps = mapStateToProps(mockHouse)
       expect(mappedProps).toEqual(expected)
     })
   })
