@@ -11,7 +11,7 @@ class App extends Component {
   componentDidMount = async () => {
     const response = await fetch('http://localhost:3001/api/v1/houses')
     const data = await response.json();
-    const houses = data.map((house, index) => {
+    const houses = await data.map((house, index) => {
       return(
         {name: house.name, founded: house.founded, seats: house.seats,
           titles: house.titles, weapons: house.ancestralWeapons,

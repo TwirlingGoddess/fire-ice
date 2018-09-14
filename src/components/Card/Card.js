@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Card = ({name, founded, seats, titles, weapons, arms, members, id, toggleHomies}) => {
+export const Card = ({name, founded, seats, titles, weapons, arms, members, id}) => {
 
   const filterMembers = members.map(member => {
     return (
@@ -15,7 +15,7 @@ export const Card = ({name, founded, seats, titles, weapons, arms, members, id, 
   })
 
   return (
-    <div className="Card" onClick={toggleHomies}>
+    <div className="Card">
       <h1>{name}</h1>
       <h3>Founded: {founded || "N/A"}</h3>
       <p>Seats: {seats}</p>

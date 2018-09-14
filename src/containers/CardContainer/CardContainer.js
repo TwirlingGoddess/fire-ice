@@ -5,24 +5,28 @@ import { addMembers } from '../../actions';
 
 class CardContainer extends Component {
 
-  membersFetch = (members) => {
+  membersFetch = async (members) => {
     const foundMembers = members.map(async member => {
-        const response = await fetch(member);
+        let memberId = await member.split('')
+        for(var i = 0; i < 49; i++) {
+          await memberId.shift()
+        }
+        const response = await fetch(`http://localhost:3001/api/v1/character/${memberId.join([])}`);
         const data = await response.json()
-        return (
-          {name: data.name, died: data.died, id: data.id}
-        )
+          const newMember = await {name: data.name, died: data.died, key: memberId.join([])}
+          console.log(newMember)
+        return newMember
       })
-      const resolvedMembers = Promise.all(foundMembers)
+
+      const resolvedMembers = await Promise.all(foundMembers)
       return this.props.addMembers(resolvedMembers)
   }
 
   render(){
     const displayCards = this.props.houses.map(house => {
-      const newId = house.name
       return( <Card {...house}
                     key={house.id}
-                    toggleHomies={this.membersFetch(house.members)}
+                    onClick={this.membersFetch(house.members)}
             />
       )})
     return (
