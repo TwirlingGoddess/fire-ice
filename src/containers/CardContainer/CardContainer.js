@@ -26,7 +26,7 @@ class CardContainer extends Component {
     const displayCards = this.props.houses.map(house => {
       return( <Card {...house}
                     key={house.id}
-                    onClick={this.membersFetch(house.members)}
+                    onClick={() => this.membersFetch(house.members)}
             />
       )})
     return (
